@@ -8,8 +8,8 @@ public struct CharacterSetError: ValidationError {
   }
 }
 
-public extension Validation where T: String {
-  static func characterSet(_ characterSet: CharacterSet) -> Validation<T> {
+public extension Validation where T == String {
+  static func inCharacterSet(_ characterSet: CharacterSet) -> Validation<T> {
     Validation {
       if let range = $0.rangeOfCharacter(from: characterSet.inverted) {
         let message = "contains an invalid character: '\($0[range])'"
