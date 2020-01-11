@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CharacterSetError: ValidationError {
+public struct NotInCharacterSetError: ValidationError {
   public let failureDescription: String?
   
   init(failureDescription: String? = nil) {
@@ -24,7 +24,7 @@ public extension Validation where T == String {
     Validation {
       if let range = $0.rangeOfCharacter(from: characterSet.inverted) {
         let message = "contains an invalid character: '\($0[range])'"
-        let error = customError ?? CharacterSetError(failureDescription: message)
+        let error = customError ?? NotInCharacterSetError(failureDescription: message)
         return .failure(.init(error))
       } else {
         let message = successMessage ?? "contains valid characters for character set: \(characterSet)"

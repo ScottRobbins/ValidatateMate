@@ -1,6 +1,6 @@
 import Foundation
 
-public struct URLError: ValidationError {
+public struct InvalidURLError: ValidationError {
   public let failureDescription: String? = "not a valid url"
 }
 
@@ -12,7 +12,7 @@ public extension Validation where T == String {
       {
         return .success("is a valid url")
       } else {
-        return .failure(.init(URLError()))
+        return .failure(.init(InvalidURLError()))
       }
     }
   }

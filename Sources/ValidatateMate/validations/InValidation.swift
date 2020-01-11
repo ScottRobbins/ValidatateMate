@@ -1,4 +1,4 @@
-public struct InError: ValidationError {
+public struct NotInListError: ValidationError {
   public let failureDescription: String?
   
   init(failureDescription: String? = nil) {
@@ -18,7 +18,7 @@ public extension Validation where T: Equatable {
         return .success("is in \(list)")
       } else {
         let message = "is not in \(list)"
-        return .failure(.init(InError(failureDescription: message)))
+        return .failure(.init(NotInListError(failureDescription: message)))
       }
     }
   }

@@ -1,4 +1,4 @@
-public struct NonEmptyError: ValidationError {
+public struct NotEmptyError: ValidationError {
   public let failureDescription: String?
   
   init(failureDescription: String? = nil) {
@@ -13,7 +13,7 @@ public extension Validation where T: Collection {
         return .success("was not empty")
       } else {
         let message = "was empty"
-        return .failure(.init(NonEmptyError(failureDescription: message)))
+        return .failure(.init(NotEmptyError(failureDescription: message)))
       }
     }
   }

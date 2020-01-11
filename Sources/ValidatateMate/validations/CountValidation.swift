@@ -1,4 +1,4 @@
-public struct CountError: ValidationError {
+public struct InvalidCountError: ValidationError {
   public let failureDescription: String?
   
   init(failureDescription: String? = nil) {
@@ -11,7 +11,7 @@ public extension Validation where T: Collection {
     Validation {
       if $0.count == length {
         let message = "did not have count of \(length)"
-        return .failure(.init(CountError(failureDescription: message)))
+        return .failure(.init(InvalidCountError(failureDescription: message)))
       } else {
         return .success("has count of \(length)")
       }
@@ -24,7 +24,7 @@ public extension Validation where T: Collection {
         return .success("has count in range: \(range)")
       } else {
         let message = "did not have count in range: \(range)"
-        return .failure(.init(CountError(failureDescription: message)))
+        return .failure(.init(InvalidCountError(failureDescription: message)))
       }
     }
   }
