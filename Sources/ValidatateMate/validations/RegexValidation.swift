@@ -6,7 +6,7 @@ public struct RegexError: ValidationError {
   }
 }
 
-public extension Validation where T: StringProtocol {
+public extension Validation where T: String {
   static func regex(_ expression: String,
                     customError: ValidationError? = nil,
                     successMessage: String? = nil) -> Validation<T>

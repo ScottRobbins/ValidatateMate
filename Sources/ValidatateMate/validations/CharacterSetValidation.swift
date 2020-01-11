@@ -8,7 +8,7 @@ public struct CharacterSetError: ValidationError {
   }
 }
 
-public extension Validation where T: StringProtocol {
+public extension Validation where T: String {
   static func characterSet(_ characterSet: CharacterSet) -> Validation<T> {
     Validation {
       if let range = $0.rangeOfCharacter(from: characterSet.inverted) {
